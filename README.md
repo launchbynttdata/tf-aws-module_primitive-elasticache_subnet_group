@@ -141,4 +141,7 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_elasticache_subnet_group_arn"></a> [elasticache\_subnet\_group\_arn](#output\_elasticache\_subnet\_group\_arn) | n/a |
+| <a name="output_elasticache_subnet_group_name"></a> [elasticache\_subnet\_group\_name](#output\_elasticache\_subnet\_group\_name) | n/a |
+| <a name="output_elasticache_subnet_vpc_id"></a> [elasticache\_subnet\_vpc\_id](#output\_elasticache\_subnet\_vpc\_id) | n/a |
+| <a name="output_elasticache_subnet_subnets_ids"></a> [elasticache\_subnet\_subnets\_ids](#output\_elasticache\_subnet\_subnets\_ids) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

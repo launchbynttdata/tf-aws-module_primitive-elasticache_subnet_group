@@ -10,18 +10,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-output "elasticache_subnet_group_arn" {
-  value = aws_elasticache_subnet_group.subnet_group.arn
-}
+terraform {
+  required_version = "~> 1.0"
 
-output "elasticache_subnet_group_name" {
-  value = aws_elasticache_subnet_group.subnet_group.name
-}
-
-output "elasticache_subnet_vpc_id" {
-  value = aws_elasticache_subnet_group.subnet_group.vpc_id
-}
-
-output "elasticache_subnet_subnets_ids" {
-  value = var.subnet_ids
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 5.14"
+    }
+  }
 }

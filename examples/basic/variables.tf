@@ -10,18 +10,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-output "elasticache_subnet_group_arn" {
-  value = aws_elasticache_subnet_group.subnet_group.arn
+variable "vpc_cidr_block" {
+  type        = string
+  description = "The IPv4 CIDR block for the VPC."
 }
 
-output "elasticache_subnet_group_name" {
-  value = aws_elasticache_subnet_group.subnet_group.name
+variable "subnet_cidr_block" {
+  type        = string
+  description = "The IPv4 CIDR block for the subnet."
 }
 
-output "elasticache_subnet_vpc_id" {
-  value = aws_elasticache_subnet_group.subnet_group.vpc_id
+variable "tags" {
+  type        = map(string)
+  description = "A map of tags to assign to the resource."
 }
 
-output "elasticache_subnet_subnets_ids" {
-  value = var.subnet_ids
+variable "subnet_group_name" {
+  type        = string
+  description = "Name for the cache subnet group. ElastiCache converts this name to lowercase."
 }
