@@ -10,18 +10,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-output "elasticache_subnet_group_arn" {
-  value = aws_elasticache_subnet_group.subnet_group.arn
-}
-
 output "elasticache_subnet_group_name" {
-  value = aws_elasticache_subnet_group.subnet_group.name
+  value = module.subnet_group.elasticache_subnet_group_name
 }
 
 output "elasticache_subnet_vpc_id" {
-  value = aws_elasticache_subnet_group.subnet_group.vpc_id
+  value = module.subnet_group.elasticache_subnet_vpc_id
 }
 
 output "elasticache_subnet_subnets_ids" {
-  value = var.subnet_ids
+  value = module.subnet_group.elasticache_subnet_subnets_ids
 }
