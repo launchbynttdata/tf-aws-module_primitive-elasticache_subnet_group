@@ -17,7 +17,7 @@ func TestComposableComplete(t *testing.T, ctx types.TestContext) {
 	awsClient := GetAWSElasticacheClient(t)
 
 	t.Run("TestIsDeployed", func(t *testing.T) {
-		subnetGroupName := terraform.Output(t, ctx.TerratestTerraformOptions(), "elasticache_subnet_group_name")
+		subnetGroupName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "elasticache_subnet_group_name")
 		out, err := awsClient.DescribeCacheSubnetGroups(context.TODO(), &elasticache.DescribeCacheSubnetGroupsInput{
 			CacheSubnetGroupName: aws.String(subnetGroupName),
 		})
@@ -30,8 +30,8 @@ func TestComposableComplete(t *testing.T, ctx types.TestContext) {
 	})
 
 	t.Run("TestSubnetsAttached", func(t *testing.T) {
-		subnetGroupName := terraform.Output(t, ctx.TerratestTerraformOptions(), "elasticache_subnet_group_name")
-		subnetsIds := terraform.OutputList(t, ctx.TerratestTerraformOptions(), "elasticache_subnet_subnets_ids")
+		subnetGroupName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "elasticache_subnet_group_name")
+		subnetsIds := terraform.OutputListContext(t, context.Background(), ctx.TerratestTerraformOptions(), "elasticache_subnet_subnets_ids")
 		out, err := awsClient.DescribeCacheSubnetGroups(context.TODO(), &elasticache.DescribeCacheSubnetGroupsInput{
 			CacheSubnetGroupName: aws.String(subnetGroupName),
 		})
