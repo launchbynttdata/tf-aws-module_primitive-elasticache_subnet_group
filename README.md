@@ -103,19 +103,13 @@ If `make check` target is successful, developer is good to commit the code to pr
 - runs `conftests`. `conftests` make sure `policy` checks are successful.
 - runs `terratest`. This is integration test suit.
 - runs `opa` tests
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.14 |
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.95.0 |
 
 ## Modules
 
@@ -131,8 +125,8 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_name"></a> [name](#input\_name) | (Required) Name for the cache subnet group. ElastiCache converts this name to lowercase. | `string` | n/a | yes |
 | <a name="input_description"></a> [description](#input\_description) | (Optional) Description for the cache subnet group. Defaults to "Managed by Terraform". | `string` | `null` | no |
+| <a name="input_name"></a> [name](#input\_name) | (Required) Name for the cache subnet group. ElastiCache converts this name to lowercase. | `string` | n/a | yes |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | (Required) List of VPC Subnet IDs for the cache subnet group | `list(string)` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | (Optional) Key-value map of resource tags. | `map(string)` | `null` | no |
 
@@ -142,6 +136,6 @@ No modules.
 |------|-------------|
 | <a name="output_elasticache_subnet_group_arn"></a> [elasticache\_subnet\_group\_arn](#output\_elasticache\_subnet\_group\_arn) | n/a |
 | <a name="output_elasticache_subnet_group_name"></a> [elasticache\_subnet\_group\_name](#output\_elasticache\_subnet\_group\_name) | n/a |
-| <a name="output_elasticache_subnet_vpc_id"></a> [elasticache\_subnet\_vpc\_id](#output\_elasticache\_subnet\_vpc\_id) | n/a |
 | <a name="output_elasticache_subnet_subnets_ids"></a> [elasticache\_subnet\_subnets\_ids](#output\_elasticache\_subnet\_subnets\_ids) | n/a |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+| <a name="output_elasticache_subnet_vpc_id"></a> [elasticache\_subnet\_vpc\_id](#output\_elasticache\_subnet\_vpc\_id) | n/a |
+<!-- END_TF_DOCS -->
