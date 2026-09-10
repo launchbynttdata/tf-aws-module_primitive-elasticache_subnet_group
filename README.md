@@ -5,70 +5,20 @@
 
 ## Overview
 
-What does this module do?
+Creates an [AWS ElastiCache subnet group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_subnet_group) from a name and a list of VPC subnet IDs.
 
+## Usage
 
-## To test the resource group module locally
+See the [basic example](./examples/basic) for a working configuration with a VPC and subnet.
 
-1. For development/enhancements to this module locally, you'll need to install all of its components. This is controlled by the `configure` target in the project's [`Makefile`](./Makefile). Before you can run `configure`, familiarize yourself with the variables in the `Makefile` and ensure they're pointing to the right places.
+```hcl
+module "elasticache_subnet_group" {
+  source = "../.."
 
-```
-make configure
-```
-
-This adds in several files and directories that are ignored by `git`. They expose many new Make targets.
-
-2. _THIS STEP APPLIES ONLY TO MICROSOFT AZURE. IF YOU ARE USING A DIFFERENT PLATFORM PLEASE SKIP THIS STEP._ The first target you care about is `env`. This is the common interface for setting up environment variables. The values of the environment variables will be used to authenticate with cloud provider from local development workstation.
-
-`make configure` command will bring down `azure_env.sh` file on local workstation. Devloper would need to modify this file, replace the environment variable values with relevant values.
-
-These environment variables are used by `terratest` integration suit.
-
-Service principle used for authentication(value of ARM_CLIENT_ID) should have below privileges on resource group within the subscription.
-
-```
-"Microsoft.Resources/subscriptions/resourceGroups/write"
-"Microsoft.Resources/subscriptions/resourceGroups/read"
-"Microsoft.Resources/subscriptions/resourceGroups/delete"
-```
-
-Then run this make target to set the environment variables on developer workstation.
-
-```
-make env
-```
-
-3. The first target you care about is `check`.
-
-**Pre-requisites**
-Before running this target it is important to ensure that, developer has created files mentioned below on local workstation under root directory of git repository that contains code for primitives/segments. Note that these files are `azure` specific. If primitive/segment under development uses any other cloud provider than azure, this section may not be relevant.
-
-- A file named `provider.tf` with contents below
-
-```
-provider "azurerm" {
-  features {}
+  name       = var.subnet_group_name
+  subnet_ids = [module.subnet.subnet_id]
 }
 ```
-
-- A file named `terraform.tfvars` which contains key value pair of variables used.
-
-Note that since these files are added in `gitignore` they would not be checked in into primitive/segment's git repo.
-
-After creating these files, for running tests associated with the primitive/segment, run
-
-```
-make check
-```
-
-If `make check` target is successful, developer is good to commit the code to primitive/segment's git repo.
-
-`make check` target
-
-- runs `terraform commands` to `lint`,`validate` and `plan` terraform code.
-- runs `conftests`. `conftests` make sure `policy` checks are successful.
-- runs `terratest`. This is integration test suit.
-- runs `opa` tests
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
